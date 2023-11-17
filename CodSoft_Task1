@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+
+    // Seeding with Current Time (+ve No.)
+    srand(static_cast<unsigned>(time(nullptr)));
+
+    int choice;
+
+    do
+    {
+        cout << "Menu:" << endl;
+        cout << "1. Start the Number Guessing Game" << endl;
+        cout << "2. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+        {
+
+            // random No. b/w 1 - 100 (seeded diff)
+            int R_NO = rand() % 100 + 1;
+
+            int guess;
+            int tries = 0;
+
+            cout << "Welcome to the Number Guessing Game!" << endl;
+
+            while (true)
+            {
+                cout << "Enter your guess: ";
+                cin >> guess;
+
+                tries++;
+
+                if (guess == R_NO)
+                {
+                    cout << "Congratulations! You guessed the number (" << R_NO << ") in " << tries << " tries!" << endl;
+                    break;
+                }
+                else
+                {
+                    cout << "Try Again!" << endl;
+                }
+            }
+        }
+        else if (choice == 2)
+        {
+            cout << "Exiting the program. Goodbye!" << endl;
+            break;
+        }
+        else
+        {
+            cout << "Invalid choice. Please enter 1 to play or 2 to exit." << endl;
+        }
+    } while (choice != 2);
+
+    return 0;
+}
